@@ -9,7 +9,8 @@ template <class Geometry1, class Geometry2>
 void save_svg(const std::string& filename, const Geometry1& a, const Geometry2& b)
 {
 	std::ofstream svg(filename.c_str());
-    boost::geometry::svg_mapper<typename boost::range_value<Geometry1>::type> mapper(svg, 400, 400);
+	typedef typename boost::range_value<Geometry1>::type point_type;
+    boost::geometry::svg_mapper<point_type> mapper(svg, 400, 400);
 
     mapper.add(a);
     mapper.add(b);
